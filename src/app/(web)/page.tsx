@@ -19,7 +19,7 @@ export default function Home() {
       </h1>
 
       <p className={cx("max-w-sm leading-8 text-sm text-slate-600")}>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio similique porro cum accusantium vitae incidunt quaerat, rem asperiores dignissimos quis explicabo, tenetur perferendis, obcaecati veritatis impedit culpa dolorem officiis mollitia?
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio similique porro cum accusantium vitae incidunt quaerat, rem asperiores dignissimos quis explicabo, tenetur perferendis, obcaecati veritatis impedit culpa dolorem officiis mollitia.
       </p>
 
 
