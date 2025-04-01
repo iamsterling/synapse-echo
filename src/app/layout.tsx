@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Oswald } from "next/font/google";
 import "./globals.css";
+import { cx } from "class-variance-authority";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -11,6 +12,10 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+const oswald = Oswald({
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,9 +28,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={cx("dark")}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={cx(`${geistSans.variable} ${geistMono.variable} antialiased`, "flex flex-col min-h-screen")}
+        // className={cx(`${ oswald.className } antialiased`, "flex flex-col min-h-screen")}
       >
         {children}
       </body>
