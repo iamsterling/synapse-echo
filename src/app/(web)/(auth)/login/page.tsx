@@ -21,7 +21,7 @@ export default function LoginPage() {
         if (state) {
             const { data, error } = state
             error && toast.error(error)
-            data.user && toast.success(data.user.id)
+            data?.user && toast.success(data.user.id)
         }
     }, [state])
 
