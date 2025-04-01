@@ -14,7 +14,7 @@ export const login = async (prev: any, form: FormData) => {
         email: `${form.get("email")}`,
         password: `${form.get("password")}`,
     })    
-    return { data, error }
+    return { data, error: error?.message }
 }
 
 export const logout = async () => {
@@ -33,5 +33,5 @@ export const signup = async (prev: any, form: FormData) => {
         email: `${form.get("email")}`,
         password: `${form.get("password")}`,
     })
-    return { data, error }
+    return { data, error: error?.message }
 }
