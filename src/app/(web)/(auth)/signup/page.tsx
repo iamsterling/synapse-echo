@@ -26,9 +26,8 @@ export default function SignupPage() {
                 toast.success(`${data.user.id} successfully created`)
                 redirect("/login")
             }
-            // error && toast.error(error?.message)
         }
-    }, [state])
+    }, [ state])
 
     return <>
         <div className="flex flex-col w-full gap-4 p-6 md:p-10 ">
