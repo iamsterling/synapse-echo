@@ -22,8 +22,11 @@ export default function SignupPage() {
         if (state) {
             const { ok, data, error } = state
             if (!ok) toast.error(error)
+            if (data?.user) {
+                toast.success(`${data.user.id} successfully created`)
+                // redirect("/login")
+            }
             // error && toast.error(error?.message)
-            // data.user && redirect("/login")
         }
     }, [state])
 
