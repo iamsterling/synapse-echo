@@ -20,9 +20,10 @@ export default function SignupPage() {
     useEffect(() => {
         console.log(state)
         if (state) {
-            const { data, error } = state
-            error && toast.error(error)
-            data.user && redirect("/login")
+            const { ok, data, error } = state
+            if (!ok) toast.error(`${ error }`)
+            // error && toast.error(error?.message)
+            // data.user && redirect("/login")
         }
     }, [state])
 
