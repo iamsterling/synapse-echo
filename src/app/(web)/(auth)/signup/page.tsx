@@ -47,7 +47,7 @@ export default function SignupPage() {
                                 <Button type="reset" variant="ghost" className="grow">
                                     Cancel
                                 </Button>
-                                <Button type="submit" variant="secondary    " className="grow">
+                                <Button type="submit" variant="secondary" className="grow">
                                     { pending && <LoaderCircle className={cx("animate-spin")} />}
                                     Signup
                                 </Button>
