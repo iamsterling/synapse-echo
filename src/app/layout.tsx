@@ -35,7 +35,7 @@ export default function RootLayout({
         // className={cx(`${ oswald.className } antialiased`, "flex flex-col min-h-screen")}
       >
         {children}
-        <Toaster />
+        <Toaster richColors />
       </body>
     </html>
   );

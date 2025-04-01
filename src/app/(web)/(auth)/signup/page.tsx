@@ -19,6 +19,11 @@ export default function SignupPage() {
 
     useEffect(() => {
         console.log(state)
+        if (state) {
+            const { data, error } = state
+            error && toast.error(error?.message)
+            data.user && redirect("/login")
+        }
     }, [state])
 
     return <>
@@ -39,12 +44,12 @@ export default function SignupPage() {
                             </div>
                             <div className="grid gap-2">
                                 <Label htmlFor="password">Password</Label>
-                                <Input id="password" type="password" required />
+                                <Input name="password" id="password" type="password" required />
                             </div>
 
 
                             <div className={cx("flex gap-4")}>
-                                <Button type="reset" variant="ghost" className="grow">
+                                <Button type="reset" className="grow text-foreground/20 bg-transparent hover:bg-transparent hover:text-foreground focus:text-foreground">
                                     Cancel
                                 </Button>
                                 <Button type="submit" variant="secondary" className="grow">

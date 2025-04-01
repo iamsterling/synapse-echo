@@ -9,16 +9,21 @@ import Link from "next/link"
 import { useActionState, useEffect } from "react"
 import { login } from "../action"
 import { redirect } from "next/navigation"
+import { toast } from "sonner"
 
 // import { LoginForm } from "@/components/login-form"
 
 export default function LoginPage() {
     const [ state, action, pending ] = useActionState(login, null)
 
-    // useEffect(() => {
-    //     console.log(state)
-    //     if (state?.ok) redirect(`/${state?.username}`)
-    // }, [state])
+    useEffect(() => {
+        console.log(state)
+        if (state) {
+            const { data, error } = state
+            error && toast.error(error?.message)
+            data.user && toast.success(data.user.id)
+        }
+    }, [state])
 
     return <>
         <div className="flex flex-col w-full gap-4 p-6 md:p-10 ">
