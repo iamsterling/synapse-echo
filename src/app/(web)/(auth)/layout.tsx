@@ -1,31 +1,24 @@
-"use client"
-
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { cx } from "class-variance-authority"
 import { GalleryVerticalEnd } from "lucide-react"
 import Link from "next/link"
-import { useActionState, useEffect } from "react"
-import { login } from "../action"
 import { redirect } from "next/navigation"
+import { ReactNode } from "react"
 
 // import { LoginForm } from "@/components/login-form"
 
-export default function LoginPage() {
-    const [ state, action, pending ] = useActionState(login, null)
+export default function LoginPage({ children }: { children: ReactNode }) {
 
-    // useEffect(() => {
-    //     console.log(state)
-    //     if (state?.ok) redirect(`/${state?.username}`)
-    // }, [state])
-
-    return <>
+    return <div className="grid lg:grid-cols-2 container w-[calc(100%-1rem)] md:w-full grow border-x-2 border-border/50 border-dashed">
+        { children }
+        {/*
         <div className="flex flex-col w-full gap-4 p-6 md:p-10 ">
 
             <div className="flex flex-1 items-center justify-center">
                 <div className="w-full max-w-xs">
-                    <form action={action} className={cx("flex flex-col gap-6" )}>
+                    <form className={cx("flex flex-col gap-6" )}>
                         <div className="flex flex-col gap-2">
                             <h1 className="uppercase text-3xl font-bold">Login</h1>
                         </div>
@@ -67,7 +60,7 @@ export default function LoginPage() {
                         </div>
                         </form>
                 </div>
-            </div>
+            </div> 
         </div>
 
         <div className="relative hidden bg-muted lg:block">
@@ -77,5 +70,6 @@ export default function LoginPage() {
                 className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
             />
         </div>
-    </>
+        */}
+    </div>
 }

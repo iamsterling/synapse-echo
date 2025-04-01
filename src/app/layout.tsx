@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Oswald } from "next/font/google";
 import "./globals.css";
 import { cx } from "class-variance-authority";
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({
         // className={cx(`${ oswald.className } antialiased`, "flex flex-col min-h-screen")}
       >
         {children}
+        <Toaster />
       </body>
     </html>
   );

@@ -30,8 +30,9 @@ export const logout = async () => {
 
 
 export const signup = async (prev: any, form: FormData) => {
-    await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
         email: `${form.get("email")}`,
         password: `${form.get("password")}`,
     })
+    return { data, error }
 }
