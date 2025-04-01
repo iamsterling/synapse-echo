@@ -21,7 +21,7 @@ export default function SignupPage() {
         console.log(state)
         if (state) {
             const { ok, data, error } = state
-            if (!ok) toast.error(`${ error }`)
+            if (!ok) toast.error(error)
             // error && toast.error(error?.message)
             // data.user && redirect("/login")
         }

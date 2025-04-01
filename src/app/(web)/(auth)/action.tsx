@@ -6,16 +6,25 @@ import { redirect } from "next/navigation";
 const supabase = createClient(`${ process.env.SUPABASE_URL }`, `${ process.env.SUPABASE_KEY }`)
 
 
+export const login = async (_: any, form: FormData) => {
+    try {
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: `${form.get("email")}`,
+            password: `${form.get("password")}`,
+        })
 
+        if (error) {
+            throw new Error(error.message);
+        }
 
-
-export const login = async (prev: any, form: FormData) => {
-    const { data, error } = await supabase.auth.signInWithPassword({
-        email: `${form.get("email")}`,
-        password: `${form.get("password")}`,
-    })    
-    return { data, error: error?.message }
-}
+        return { ok: true, data };
+    } catch (err: any) {
+        return {
+            ok: false,
+            error: err.message || "Something went wrong",
+        };
+    }
+};
 
 export const logout = async () => {
 
@@ -26,34 +35,22 @@ export const logout = async () => {
     }
 }
 
-
-// export const signup = async (prev: any, form: FormData) => {
-//     // console.log("Signing up with", form.get("email"), form.get("password"))
-//     const { data, error } = await supabase.auth.signUp({
-//         email: `${form.get("email")}`,
-//         password: `${form.get("password")}`,
-//     })
-//     return { data, error: error?.message }
-// }
-
-
 export const signup = async (_: any, form: FormData) => {
     try {
         const { data, error } = await supabase.auth.signUp({
             email: form.get("email") as string,
             password: form.get("password") as string,
-        })
-    
-        if (error) {
-            throw new Error(JSON.stringify({ message: error.message }));
-        }
-        return { ok: true, data }
-    } catch (error) {
+        });
 
+        if (error) {
+            throw new Error(error.message);
+        }
+
+        return { ok: true, data };
+    } catch (err: any) {
         return {
             ok: false,
-            error
-        }
+            error: err.message || "Something went wrong",
+        };
     }
-
 };
